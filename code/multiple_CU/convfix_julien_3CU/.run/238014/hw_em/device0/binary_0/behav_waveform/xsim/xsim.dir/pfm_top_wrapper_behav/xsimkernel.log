@@ -1,0 +1,7 @@
+Running: xsim.dir/pfm_top_wrapper_behav/xsimk -wdb xilinx_u280_gen3x16_xdma_1_202211_1-0-conversion.wdb -simmode gui -simrunnum 0 -socket 41555
+Design successfully loaded
+Design Loading Memory Usage: 89360 KB (Peak: 89360 KB)
+Design Loading CPU Usage: 60 ms
+Simulation completed
+Simulation Memory Usage: 378368 KB (Peak: 443904 KB)
+Simulation CPU Usage: 61690 ms

@@ -1,0 +1,9 @@
+#
+# An unexpected error has occurred (11)
+#
+Stack:
+/lib64/libpthread.so.0(+0x12b20) [0x7f8583405b20]
+/lib64/libc.so.6(__select+0x5f) [0x7f85831244ff]
+/home/fpga/tools/Vivado/2022.2/lib/lnx64.o/libtcl8.5.so(+0xdd35c) [0x7f857f30f35c]
+/lib64/libpthread.so.0(+0x814a) [0x7f85833fb14a]
+/lib64/libc.so.6(clone+0x43) [0x7f858312cf23]

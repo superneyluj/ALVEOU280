@@ -1,0 +1,147 @@
+xsim pfm_top_wrapper_behav -key {Behavioral:sim_1:Functional:pfm_top_wrapper} -tclbatch pfm_top_wrapper.tcl -protoinst protoinst_files/bd_f615.protoinst -protoinst protoinst_files/bd_4bfa.protoinst -protoinst protoinst_files/bd_27a1.protoinst -protoinst protoinst_files/bd_e7f0.protoinst -protoinst protoinst_files/bd_2b97.protoinst -protoinst protoinst_files/bd_4688.protoinst -protoinst protoinst_files/bd_86d9.protoinst -protoinst protoinst_files/bd_8629.protoinst -protoinst protoinst_files/bd_4678.protoinst -protoinst protoinst_files/bd_87c9.protoinst -protoinst protoinst_files/bd_4798.protoinst -protoinst protoinst_files/bd_065e.protoinst -protoinst protoinst_files/bd_5607.protoinst -protoinst protoinst_files/bd_d216.protoinst -protoinst protoinst_files/bd_763a.protoinst -protoinst protoinst_files/bd_b62f.protoinst -protoinst protoinst_files/bd_76e2.protoinst -protoinst protoinst_files/bd_7606.protoinst -protoinst protoinst_files/bd_778a.protoinst -protoinst protoinst_files/bd_b79f.protoinst -protoinst protoinst_files/bd_b7e7.protoinst -protoinst protoinst_files/bd_5dca.protoinst -protoinst protoinst_files/pfm_dynamic.protoinst -protoinst protoinst_files/bd_387c.protoinst -protoinst protoinst_files/pfm_top.protoinst -log simulate.log --wdb xilinx_u280_gen3x16_xdma_1_202211_1-0-conversion.wdb --protoinst ./dr_behav.protoinst
+
+****** xsim v2022.2.2 (64-bit)
+  **** SW Build 3788238 on Tue Feb 21 19:59:23 MST 2023
+  **** IP Build 3783773 on Tue Feb 21 23:41:56 MST 2023
+    ** Copyright 1986-2023 Xilinx, Inc. All Rights Reserved.
+
+source xsim.dir/pfm_top_wrapper_behav/xsim_script.tcl
+# xsim {pfm_top_wrapper_behav} -wdb {xilinx_u280_gen3x16_xdma_1_202211_1-0-conversion.wdb} -autoloadwcfg -tclbatch {pfm_top_wrapper.tcl} -key {Behavioral:sim_1:Functional:pfm_top_wrapper} -protoinst {protoinst_files/bd_f615.protoinst} -protoinst {protoinst_files/bd_4bfa.protoinst} -protoinst {protoinst_files/bd_27a1.protoinst} -protoinst {protoinst_files/bd_e7f0.protoinst} -protoinst {protoinst_files/bd_2b97.protoinst} -protoinst {protoinst_files/bd_4688.protoinst} -protoinst {protoinst_files/bd_86d9.protoinst} -protoinst {protoinst_files/bd_8629.protoinst} -protoinst {protoinst_files/bd_4678.protoinst} -protoinst {protoinst_files/bd_87c9.protoinst} -protoinst {protoinst_files/bd_4798.protoinst} -protoinst {protoinst_files/bd_065e.protoinst} -protoinst {protoinst_files/bd_5607.protoinst} -protoinst {protoinst_files/bd_d216.protoinst} -protoinst {protoinst_files/bd_763a.protoinst} -protoinst {protoinst_files/bd_b62f.protoinst} -protoinst {protoinst_files/bd_76e2.protoinst} -protoinst {protoinst_files/bd_7606.protoinst} -protoinst {protoinst_files/bd_778a.protoinst} -protoinst {protoinst_files/bd_b79f.protoinst} -protoinst {protoinst_files/bd_b7e7.protoinst} -protoinst {protoinst_files/bd_5dca.protoinst} -protoinst {protoinst_files/pfm_dynamic.protoinst} -protoinst {protoinst_files/bd_387c.protoinst} -protoinst {protoinst_files/pfm_top.protoinst} -protoinst {./dr_behav.protoinst}
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_hub.inst.s_aximm_wr_util. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_hub.inst.s_aximm_wr_util_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon0.inst.rd_mon.rd_skt. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon0.inst.rd_mon.rd_skt_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon0.inst.rd_mon.wr_skt. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon0.inst.rd_mon.wr_skt_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Info: (I804) /IEEE_Std_1666/deprecated: sc_sensitive_neg is deprecated use sc_sensitive << with neg() instead
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon1.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon2.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon3.inst.rd_mon.rd_skt. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon3.inst.rd_mon.rd_skt_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon3.inst.rd_mon.wr_skt. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon3.inst.rd_mon.wr_skt_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon4.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon5.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon6.inst.rd_mon.rd_skt. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon6.inst.rd_mon.rd_skt_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon6.inst.rd_mon.wr_skt. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon6.inst.rd_mon.wr_skt_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon7.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.rd_mon.rd_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.rd_mon.rd_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.wr_mon.wr_skt_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.wr_mon.wr_skt_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.mon_saxi_rd_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.mon_saxi_rd_socket_0_0
+In file: sc_object_manager.cpp:161
+
+Warning: (W505) object already exists: .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.mon_saxi_wr_socket_0. Latter declaration will be renamed to .pfm_top_wrapper.pfm_top_i.pfm_dynamic_inst.System_DPA.dpa_mon8.inst.mon_saxi_wr_socket_0_0
+In file: sc_object_manager.cpp:161
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Warning: (W570) attempt to use an empty process handle ignored: dont_initialize()
+In file: sc_process_handle.h:290
+WARNING::[ XTLM::751 ] Deprecated.! Please instantiate Memory Manager with this pointer (sc_module pointer).
+
+Info: (I804) /IEEE_Std_1666/deprecated: sc_sensitive_pos is deprecated use sc_sensitive << with pos() instead
+
+Info: (I804) /IEEE_Std_1666/deprecated: sc_object::get_parent() is deprecated, use get_parent_object() instead
