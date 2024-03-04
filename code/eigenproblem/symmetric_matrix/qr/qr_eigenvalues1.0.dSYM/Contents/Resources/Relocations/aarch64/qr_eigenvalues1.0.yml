@@ -1,0 +1,14 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/superneiluj/Desktop/ALVEO U280/code/eigenproblem/symmetric_matrix/qr/qr_eigenvalues1.0'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _generateSymmetricMatrix, symObjAddr: 0x0, symBinAddr: 0x10000291C, symSize: 0xE8 }
+  - { offsetInCU: 0x52, offset: 0x52, size: 0x8, addend: 0x0, symName: _generateSymmetricMatrix, symObjAddr: 0x0, symBinAddr: 0x10000291C, symSize: 0xE8 }
+  - { offsetInCU: 0xD8, offset: 0xD8, size: 0x8, addend: 0x0, symName: _printMatrix, symObjAddr: 0xE8, symBinAddr: 0x100002A04, symSize: 0xBC }
+  - { offsetInCU: 0x142, offset: 0x142, size: 0x8, addend: 0x0, symName: _elementsToTridiagonalize, symObjAddr: 0x1A4, symBinAddr: 0x100002AC0, symSize: 0x114 }
+  - { offsetInCU: 0x200, offset: 0x200, size: 0x8, addend: 0x0, symName: _generateRotationMatrix, symObjAddr: 0x2B8, symBinAddr: 0x100002BD4, symSize: 0x1B8 }
+  - { offsetInCU: 0x2CC, offset: 0x2CC, size: 0x8, addend: 0x0, symName: _applyRotation, symObjAddr: 0x470, symBinAddr: 0x100002D8C, symSize: 0x2C4 }
+  - { offsetInCU: 0x3FA, offset: 0x3FA, size: 0x8, addend: 0x0, symName: _qrDecomposition, symObjAddr: 0x734, symBinAddr: 0x100003050, symSize: 0x720 }
+  - { offsetInCU: 0x6FD, offset: 0x6FD, size: 0x8, addend: 0x0, symName: _findEigenvaluesAndEigenvectors, symObjAddr: 0xE54, symBinAddr: 0x100003770, symSize: 0x5E4 }
+  - { offsetInCU: 0x924, offset: 0x924, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x1438, symBinAddr: 0x100003D54, symSize: 0x16C }
+...
