@@ -5,6 +5,8 @@
 
 #include <stdio.h>
 
+
+//Définition de la constante EPS pour la précision
 #define EPS 0.00000000000001
 
 int main(int argc, char**argv)
@@ -57,6 +59,8 @@ int main(int argc, char**argv)
     }
 
     //Lancement de la fonction divide_and_conquer
+    //Avec en argument la matrice T la matrice d'entrée tridiagonale
+    //et les matrices Q et L pour stocker les résultats
     r = matrix_divide_and_conquer(T, &Q, &L, EPS);
     if (r) {
         error_code = r;

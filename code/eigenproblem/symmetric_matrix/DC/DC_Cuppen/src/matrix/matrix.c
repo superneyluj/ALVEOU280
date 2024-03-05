@@ -57,6 +57,8 @@ __inline__ void matrix_set(matrix_type_t mat, unsigned h, unsigned w, long doubl
     mat->vals[((h - 1) * mat->w) + (w - 1)] = val;
 }
 
+
+//Fonction pour récupérer la valeur d'une matrice
 __inline__ long double matrix_get(const matrix_type_t mat, unsigned h, unsigned w)
 {
     assert((h >= 1) && (h <= mat->h));

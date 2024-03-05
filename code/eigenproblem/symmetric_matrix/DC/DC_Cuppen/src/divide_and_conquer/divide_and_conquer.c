@@ -21,6 +21,8 @@
 #include "utils.h"
 #endif  /* DIVIDE_AND_CONQUER_DEBUG */
 
+
+//Fonction pour créer une matrice à partir d'une partie d'une autre matrice
 static matrix_type_t matrix_from_part(const matrix_type_t T, unsigned b, unsigned e)
 {
     unsigned n = (e - b + 1);
@@ -76,6 +78,8 @@ int matrix_divide_and_conquer(const matrix_type_t T, matrix_type_t*Q, matrix_typ
       Final stage of recursion: 1x1 matrix L.
       L = 1 * L * 1.
     */
+
+   
     if (n == 1) {
         (*Q) = matrix_create(1, 1);
         if ((*Q) == NULL) {
@@ -95,14 +99,18 @@ int matrix_divide_and_conquer(const matrix_type_t T, matrix_type_t*Q, matrix_typ
       Partition nxn matrix T to two matrices: T1 and T2,
       find Q1, L1 and Q2, L2 for them, using recursion.
      */
+
+    //Si n est pair alors m = n/2 sinon m = (n-1)/2
     if (n % 2 == 0) {
         m = n / 2;
     } else {
         m = (n - 1) / 2;
     }
 
+    //récupération de l'élément de la matrice T à la position m,m+1
     rho = fabsl(matrix_get(T, m, m + 1));
 
+    //Création de la matrice T1 à partir de la matrice T
     T1 = matrix_from_part(T, 1, m);
     if (T1 == NULL) {
         r = -3;
@@ -118,6 +126,15 @@ int matrix_divide_and_conquer(const matrix_type_t T, matrix_type_t*Q, matrix_typ
     }
     cell = matrix_get(T2, 1, 1);
     matrix_set(T2, 1, 1, cell - rho);
+
+    printf("-----------MATRICE INITIALE-----------\n");
+    matrix_print(T, 0.00000000000001);
+    printf("Valeur de rho : %Lf\n", rho);
+    printf("-----------TEST-----------\n");
+    printf("T1:\n");
+    matrix_print(T1, 0.00000000000001);
+    printf("T2:\n");
+    matrix_print(T2, 0.00000000000001);
 
     r = matrix_divide_and_conquer(T1, &Q1, &L1, eps);
     if (r) {
