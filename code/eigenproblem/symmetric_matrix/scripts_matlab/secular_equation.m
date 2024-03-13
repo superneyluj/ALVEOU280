@@ -1,21 +1,40 @@
 % D?finition de la matrice tridiagonale 6x6
 SIGN=1 % rho positif
-%SIGN=-1 % rho négatif
+SIGN=-1 % rho négatif
 fprintf('Matrice initiale T : \n');
-T = [6 6 0 0 0 0; 6 1 3 0 0 0; 0 3 4 SIGN*8 0 0; 0 0 SIGN*8 4 8 0; 0 0 0 8 8 7; 0 0 0 0 7 4];
+T = [6 6 0 0 0 0; 6 1 3 0 0 0; 0 3 4 8 0 0; 0 0 8 4 8 0; 0 0 0 8 8 7; 0 0 0 0 7 4];
+i_pivot=5
+T(i_pivot, i_pivot+1)=T(i_pivot, i_pivot+1)*SIGN;
+T(i_pivot+1, i_pivot)=T(i_pivot+1, i_pivot)*SIGN;
 
+T_or=T;
 % Affichage de la matrice
 disp(T);
+beta = T(i_pivot, i_pivot+1);
+SIGN=(beta<0);
+% en vérifiant dans  https://en.wikipedia.org/wiki/Tridiagonal_matrix
+% et en regardant le calcul du déterminant, on voit que si on change
+% le signe de T(i_pivot, i_pivot+1) et de T(i_pivot+1, i_pivot)
+% le déterminant reste le même.  Donc on peut se ramener au cas rho>0 avec
+% cette astuce.  Par contre je n'ai pas regardé ce que ça implique sur les
+% vecteurs propres.
+
+if (beta<0)
+    beta=-beta;
+    T(i_pivot, i_pivot+1)=beta;
+    T(i_pivot+1, i_pivot)=beta;
+    SIGN=1;
+end
+
 
 % Division de T en deux matrices T1 et T2
-T1 = T(1:3, 1:3);
-T2 = T(4:6, 4:6);
+T1 = T(1:i_pivot, 1:i_pivot);
+T2 = T(i_pivot+1:6, i_pivot+1:6);
 
 % Extraction de l'?l?ment beta
-beta = T(3, 4);
 
 % Mise ? jour des ?l?ments T1_nn et T2_11 en soustrayant beta
-T1(3, 3) = T1(3, 3) - beta;
+T1(i_pivot, i_pivot) = T1(i_pivot, i_pivot) - beta;
 T2(1, 1) = T2(1, 1) - beta;
 
 % Affichage des sous matrices 
@@ -30,6 +49,9 @@ disp(T2);
 
 fprintf('Vecteur u\n');
 u = [0;0;1;1;0;0];
+u = zeros(6,1);
+u(i_pivot)=1;
+u(i_pivot+1)=1;
 disp(u);
 
 fprintf('Recombinaison de T1 et T2\n');
@@ -91,20 +113,25 @@ disp(Dl)
 
 %calcul et comparaison des valeurs propres et vecteurs propres
 [Q_T,D_T]=eig(T);
-fprintf('Q_T\n');
-disp(Q_T);
-fprintf('D_T\n');
-disp(D_T);
+[Q_T_or,D_T]=eig(T_or);
+Q_T./Q_T_or;
+% La correction pour obtenir les vecteurs propres de départ
+% Je n'ai pas la preuve formelle, à creuser ...
+
+D_corr=diag([ones(1,i_pivot) -ones(1,6-i_pivot)]);
+
+Q_Tcorr=D_corr*Q_T;
+%  Verification que la correction fonctionne ...
+
+Q_Tcorr'*T_or*Q_Tcorr
 
 
 
 
-
-function [lambda,dl]=zerodandc(d,v,i,rho)
+function [lambda,dl]=zerodandc(d,v,i)
 
 %  Pages 105  - corrigée
 
-SIGN=sign(rho);
 n=length(d);
 Ds=diag(d);
 di=d(i);
@@ -116,7 +143,7 @@ end
 eta = 1;
 psi1 = sum((v(1:i).^2)./(d(1:i) - lambda));
 psi2 = sum((v(i+1:n).^2)./(d(i+1:n) - lambda));
-if 1+psi1+psi2>0, % zero is on the left half of the interval
+if (1+psi1+psi2)>0, % zero is on the left half of the interval
     d=d-di; lambda=lambda-di;di1=di1-di;di=0;
     while abs(eta) > 10*eps
         psi1 = sum(v(1:i).^2./(d(1:i) - lambda));
@@ -172,22 +199,12 @@ function Dl=secular_solutionDC2(D,w,rho)
 [d,Index]=sort(diag(D));
 Ds=diag(d);
 Dl=Ds;
-v=w(Index)*sqrt(abs(rho))*sign(rho);    % renommage de w pour être cohérent avec 5.5
+v=w(Index)*sqrt((rho));    % renommage de w pour être cohérent avec 5.5
 % et rho ...
 n=length(d);
-if rho>0
     for i = 1:n
-        [ lambda, Dl(i,i)]=zerodandc(d,v,i,rho);
+        [ lambda, Dl(i,i)]=zerodandc(d,v,i);
     end
-else
-    d(2:n)=d(1:n-1);
-    d(1)=d(1)-norm(v);
-    for i = 1:n
-        [ lambda, Dl(i,i)]=zerodandc(d,v,i,rho);
-    end
-
-
-end
 end
 
 
@@ -198,126 +215,4 @@ end
 
 
 
-
-function lambda=secular_solution(D,w,beta)
-
-epsilon = 1e-4; % Petite quantité pour ajuster la valeur initiale de lambda
-lambda_init = D(1,1) + epsilon; % Ajustement de la valeur initiale de lambda
-
-% Méthode de Newton pour trouver la racine de l'équation séculaire
-tolerance = 1e-6; % Seuil de tolérance pour l'arrêt
-lambda = lambda_init;
-iter = 0;
-max_iter = 100; % Nombre maximal d'itérations
-while iter < max_iter
-    f_lambda = secular_equation(lambda, D, w);
-    % Calcul de la dérivée de f par rapport à lambda
-    df_lambda = -beta * sum((w.^2) ./ ((diag(D) - lambda).^2));
-    
-    % Mise à jour de lambda en utilisant la méthode de Newton
-    lambda_new = lambda - f_lambda / df_lambda;
-    
-    % Vérification de la condition d'arrêt
-    if abs(lambda_new - lambda) < tolerance
-        break;
-    end
-    
-    lambda = lambda_new;
-    iter = iter + 1;
-end
-
-fprintf('Valeur approchée de lambda : %f apres %d iterations\n', lambda,iter);
-
-end
-% Définition de l'équation séculaire
-function f = secular_equation(lambda, D, w)
-    f = 1 +  sum((w.^2) ./ (diag(D) - lambda));
-end
-
-
-
-% function Dl=secular_solution2(D,w,rho)
-% 
-% % order diagonal elements
-% [d,Index]=sort(diag(D));
-% Ds=diag(d);
-% Dl=Ds;
-% v=w(Index)*sqrt(rho);    % renommage de w pour être cohérent avec 5.5
-% % et rho ...
-% n=length(d);
-% for i = 1:n
-%     d=diag(Ds);
-%     di=d(i);
-%     if i < n
-%         di1=d(i+1);lambda=(di+di1)/2;          %initialiser 
-%     else
-%         di1=d(n)+norm(v)^2;lambda=di1;
-%     end
-%     eta = 1;
-%     psi1 = sum((v(1:i).^2)./(d(1:i) - lambda));
-%     psi2 = sum((v(i+1:n).^2)./(d(i+1:n) - lambda));
-%     if 1+psi1+psi2>0, % zero is on the left half of the interval
-%         d=d-di; lambda=lambda-di;di1=di1-di;di=0;
-%         while abs(eta) > 10*eps
-%             psi1 = sum(v(1:i).^2./(d(1:i) - lambda));
-%             psi1s = sum(v(1:i).^2./((d(1:i) - lambda)).^2);
-%             psi2 = sum((v(i+1:n)).^2./(d(i+1:n) - lambda));
-%             psi2s = sum(v(i+1:n).^2./((d(i+1:n) - lambda)).^2);
-%             % Solve for zero
-%             Di = -lambda; Di1 = di1 - lambda;
-%             a = (Di + Di1)*(1 + psi1 + psi2) - Di*Di1*(psi1s+psi2s);
-%             b = Di*Di1*(1 + psi1 + psi2);
-%             c = (1 + psi1 + psi2) - Di*psi1s - Di1*psi2s;
-%             if a > 0,
-%                 eta = (2*b)/(a + sqrt(a^2 - 4*b*c)); else
-%                 eta = (a - sqrt(a^2 - 4*b*c))/(2*c);
-%             end
-%             lambda = lambda + eta;
-%         end
-%         Dl(i,i)=Ds(i,i)+lambda;
-%     else % zero is on the right half of the interval
-%         d = d - di1; lambda = lambda - di1; di = di - di1;
-%         while abs(eta) > 10*eps
-%             psi1 = sum(v(1:i).^2./(d(1:i) - lambda));
-%             psi1s = sum(v(1:i).^2./((d(1:i) - lambda)).^2);
-%             psi2 = sum((v(i+1:n)).^2./(d(i+1:n) - lambda));
-%             psi2s = sum(v(i+1:n).^2./((d(i+1:n) - lambda)).^2);
-%             % Solve for zero
-%             Di = di - lambda;
-%             Di1 = - lambda;
-%             a = (Di + Di1)*(1 + psi1 + psi2) - Di*Di1*(psi1s+psi2s);
-%             b = Di*Di1*(1 + psi1 + psi2);
-%             c = (1 + psi1 + psi2) - Di*psi1s - Di1*psi2s;
-%             if a > 0,
-%                 eta = (2*b)/(a + sqrt(a^2 - 4*b*c));
-%             else
-%                 eta = (a - sqrt(a^2 - 4*b*c))/(2*c);
-%             end
-%             lambda = lambda + eta;
-%         end
-%         Dl(i,i)=Ds(i+1,i+1)+lambda;
-%     end
-% end
-% 
-% 
-% 
-% 
-% 
-% 
-% % solution de l'équation 5.26
-% % b=-(c1+c2+c3*(d1+d2));
-% % c=c1*d2+c2*d1+c3*d1*d2;
-% % deter=sqrt(b*b-4*c);
-% % r1=(-b+deter)/2;
-% % r2=(-b-deter)/2;
-% % if(d1<=r1<=d2)
-% %     root=r1;
-% % else
-% %     root=r2;
-% % end
-% 
-% 
-% 
-% 
-% end
 
